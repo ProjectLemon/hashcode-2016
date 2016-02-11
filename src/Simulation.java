@@ -1,3 +1,9 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.nio.file.FileSystems;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -12,8 +18,17 @@ import java.util.Map;
 public class Simulation {
 
     public static void main(String[] args) {
+        String data_file_name;
+        if (args.length == 0) {
+            data_file_name = "busy_day.in";
+        } else {
+            data_file_name = args[0];
+        }
 
         SimulationParameters parameters = new SimulationParameters();
+        IOHelper.parseFile(Paths.get("./data/"+data_file_name), parameters);
+
+
         int totTime = parameters.getTotalSimulationTime();
 
         Grid grid = new Grid(parameters.getNrOfRows(), parameters.getNrOfCols());
@@ -60,14 +75,27 @@ public class Simulation {
 
         // Calculate paths
         it = warehouses.entrySet().iterator();
-        while (nrOfDrones > 0) {
-            while (it.hasNext()) {
-                Map.Entry pair = (Map.Entry) it.next();
-                Warehouse warehouse = (Warehouse) pair.getValue();
-                Position pos = (Position) pair.getKey();
+        while (it.hasNext()) {
+            Map.Entry pair = (Map.Entry) it.next();
+            Warehouse warehouse = (Warehouse) pair.getValue();
+            Position pos = (Position) pair.getKey();
 
-                orders = warehouse.getOrders();
+
+
+
+            Order outestOrder = warehouse.getOrders().get(0);
+            double outestDistance = distance(outestOrder.getPosition(), pos);
+            for (Order order : orders) {
+                double distance = distance(order.getPosition(), pos);
+                if (distance > outestDistance) {
+                    outestDistance = distance;
+                    outestOrder = order;
+                }
             }
+
+
+
+
         }
 
         // Main loop
@@ -75,6 +103,7 @@ public class Simulation {
 
         }
     }
+
 
     public static double distance(Position pos1, Position pos2) {
         return Math.sqrt(Math.abs(pos1.getY() + pos2.getY()) + Math.abs(pos1.getX() + pos2.getX()));
