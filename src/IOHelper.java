@@ -36,16 +36,18 @@ public class IOHelper {
                                              SimulationParameters parameters)
                                                 throws IOException {
         String line = null;
-        line = reader.readLine();
-        parameters.setNrOfRows(Integer.parseInt(line));
-        line = reader.readLine();
-        parameters.setNrOfCols(Integer.parseInt(line));
-        line = reader.readLine();
-        parameters.setNrOfDrones(Integer.parseInt(line));
-        line = reader.readLine();
-        parameters.setTotalSimulationTime(Integer.parseInt(line));
-        line = reader.readLine();
-        parameters.setMaxLoadDrones(Integer.parseInt(line));
+        Scanner scanner = new Scanner(file);
+        int rowCount = Integer.parseInt(scanner.next());
+        int colCOunt = Integer.parseInt(scanner.next());
+        int numberOfDrones = Integer.parseInt(scanner.next());
+        int deadLineOfSimulation = Integer.parseInt(scanner.next());
+        int maxLoadDrone = Integer.parseInt(scanner.next());
+        parameters.setNrOfRows(rowCount);
+        parameters.setNrOfCols(colCOunt);
+        parameters.setNrOfDrones(numberOfDrones);
+        parameters.setTotalSimulationTime(deadLineOfSimulation);
+        parameters.setMaxLoadDrones(maxLoadDrone);
+
     }
 
     private static void readProductInfo(BufferedReader reader,
