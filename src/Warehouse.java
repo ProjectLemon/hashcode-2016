@@ -32,4 +32,10 @@ public class Warehouse {
             productCount.put(type, count);
         }
     }
+
+    public boolean isProductInWarehouse(Integer product) {
+        boolean found = true;
+        //return if(found product)
+        return found;
+    }
 }

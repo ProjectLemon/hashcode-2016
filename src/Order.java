@@ -23,6 +23,15 @@ public class Order {
     public Position getPosition() {
         return position;
     }
+
+    public boolean isProductInClosestWarehouse(Integer product) {
+        boolean found = warehouse.isProductInWarehouse(product);
+        return found;
+        /*
+        * om den inte finns så ska produkten få veta att vilket varuhus den ska till.
+        * */
+    }
+
     //TODO: getters
     //TODO: How many of each productType?
 }
