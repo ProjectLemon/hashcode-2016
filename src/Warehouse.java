@@ -10,6 +10,7 @@ public class Warehouse {
     private final Position position;
     private HashMap<Integer, Integer> productCount = new HashMap<>();
     private List<Order> orders = new ArrayList<>();
+    private int ID;
 
     public Warehouse(Position pos, HashMap<Integer, Integer> count) {
         this.position = pos;

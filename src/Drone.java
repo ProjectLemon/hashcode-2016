@@ -16,17 +16,17 @@ public class Drone {
     double y;
     Stack history;
 
-    public Drone(double x, double y, int maxWeight, int ID;) {
+    public Drone(double x, double y, int maxWeight, int ID) {
         this.ID = ID;
         this.maxWeight = maxWeight;
     }
 
-    public move( ,int timestep){
+    public void move(int timestep){
 
     }
 
-    public addMoventHistory( ){
-        this.timestep
+    public void addMoventHistory( ){
+        //this.timestep;
         // hämta villket tidssteg
     }
 
@@ -43,7 +43,12 @@ public class Drone {
             return true;
         }
     }
-    public Load(int ){
+    public load(Integer werhouseID, Integer prodctType, Integer numberOfItems){
+        String a = this.ID + "L" + werhouseID.toString() + prodctType.toString() + numberOfItems.toString();
 
+<<<<<<< HEAD
    }*/
+=======
+    }
+>>>>>>> 052c6b776caf713743117e39fa2a9fb8e527b506
 }
