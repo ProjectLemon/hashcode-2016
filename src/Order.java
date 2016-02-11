@@ -11,11 +11,11 @@ public class Order {
     private Warehouse closestWarehouse;
     private Integer weight = 0;
 
-    public Order(Position pos, int size, List<Integer> types, Integer weight) {
-        this.weight = weight;
+    public Order(Position pos, int size, List<Integer> types) {
         this.position = pos;
         this.orderSize = size;
         this.productTypes = types;
+        calculateWeight();
     }
 
     public void addWarehouse(Warehouse warehouse) {
@@ -29,6 +29,12 @@ public class Order {
     public boolean isProductInClosestWarehouse(Integer product) {
         boolean found = closestWarehouse.isProductInWarehouse(product);
         return found;
+    }
+
+    private void calculateWeight() {
+        for (Integer item : productTypes) {
+            //weight +=
+        }
     }
 
     //TODO: getters

@@ -3,8 +3,7 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.HashMap;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Created by linuslagerhjelm on 16-02-11.
@@ -17,7 +16,7 @@ public class IOHelper {
             readParameterSection(reader, parameters);
             readProductInfo(reader, file, parameters);
             readWarehouseInfo(reader, file, parameters);
-            readCustomerOrders(reader, parameters);
+            readCustomerOrders(reader, file, parameters);
         } catch (IOException x) {
             System.err.format("IOException: %s%n", x);
         }
@@ -76,8 +75,23 @@ public class IOHelper {
     }
 
     private static void readCustomerOrders(BufferedReader reader,
+                                           Path file,
                                            SimulationParameters parameters)
                                             throws IOException {
-        
+        int nrOfOrders = Integer.parseInt(reader.readLine());
+        parameters.setNrOfCustomerOrders(nrOfOrders);
+        List<Order> orders = new LinkedList<>();
+        Scanner scanner = new Scanner(file);
+        for (int i = 0; i < nrOfOrders; ++i) {
+            int row = Integer.parseInt(scanner.next());
+            int col = Integer.parseInt(scanner.next());
+            int nrOfItemsInOrder = Integer.parseInt(scanner.next());
+            List<Integer> types = new ArrayList<>();
+            for (int j = 0; j < nrOfItemsInOrder; ++j) {
+                types.add(Integer.parseInt(scanner.next()));
+            }
+            orders.add( new Order(new Position(col, row), nrOfItemsInOrder, types) );
+        }
+        parameters.setOrders(orders);
     }
 }
