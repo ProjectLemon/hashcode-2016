@@ -8,16 +8,18 @@ public class Order {
     private final Position position;
     private int orderSize = 0;
     private List<Integer> productTypes = new ArrayList<>();
-    private Warehouse warehouse;
+    private Warehouse closestWarehouse;
+    private Integer weight = 0;
 
-    public Order(Position pos, int size, List<Integer> types) {
+    public Order(Position pos, int size, List<Integer> types, Integer weight) {
+        this.weight = weight;
         this.position = pos;
         this.orderSize = size;
         this.productTypes = types;
     }
 
     public void addWarehouse(Warehouse warehouse) {
-        this.warehouse = warehouse;
+        this.closestWarehouse = warehouse;
     }
 
     public Position getPosition() {
@@ -25,11 +27,8 @@ public class Order {
     }
 
     public boolean isProductInClosestWarehouse(Integer product) {
-        boolean found = warehouse.isProductInWarehouse(product);
+        boolean found = closestWarehouse.isProductInWarehouse(product);
         return found;
-        /*
-        * om den inte finns så ska produkten få veta att vilket varuhus den ska till.
-        * */
     }
 
     //TODO: getters
