@@ -1,5 +1,4 @@
-import java.io.BufferedReader;
-import java.io.IOException;
+import java.io.*;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -9,8 +8,10 @@ import java.util.*;
  * Created by linuslagerhjelm on 16-02-11.
  */
 public class IOHelper {
+    private static SimulationParameters parameters;
 
     public static void parseFile(Path file, SimulationParameters parameters) {
+        IOHelper.parameters = parameters;
         Charset charset = Charset.forName("US-ASCII");
         try (BufferedReader reader = Files.newBufferedReader(file, charset)) {
             readParameterSection(reader, parameters);
@@ -20,6 +21,14 @@ public class IOHelper {
         } catch (IOException x) {
             System.err.format("IOException: %s%n", x);
         }
+    }
+    public static void writeSubmissionFile(String filename, String... lines) {
+        try (Writer writer = new BufferedWriter(new OutputStreamWriter(
+                new FileOutputStream(filename), "US-ASCII"))) {
+            for (String line: lines) {
+                writer.write(line);
+            }
+        } catch (IOException e) {}
     }
 
     private static void readParameterSection(BufferedReader reader,
