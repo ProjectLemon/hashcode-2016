@@ -11,11 +11,11 @@ public class Order {
     private Warehouse closestWarehouse;
     private Integer weight = 0;
 
-    public Order(Position pos, int size, List<Integer> types) {
+    public Order(Position pos, int size, List<Integer> types, Integer weight) {
+        this.weight = weight;
         this.position = pos;
         this.orderSize = size;
         this.productTypes = types;
-        calculateWeight();
     }
 
     public void addWarehouse(Warehouse warehouse) {
@@ -31,11 +31,6 @@ public class Order {
         return found;
     }
 
-    private void calculateWeight() {
-        for (Integer item : productTypes) {
-            //weight +=
-        }
-    }
 
     //TODO: getters
     //TODO: How many of each productType?

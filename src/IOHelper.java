@@ -90,8 +90,17 @@ public class IOHelper {
             for (int j = 0; j < nrOfItemsInOrder; ++j) {
                 types.add(Integer.parseInt(scanner.next()));
             }
-            orders.add( new Order(new Position(col, row), nrOfItemsInOrder, types) );
+            int weight = calculateWeight(types, parameters);
+            orders.add(new Order(new Position(col, row), nrOfItemsInOrder, types, weight));
         }
         parameters.setOrders(orders);
+    }
+
+    private static int calculateWeight(List<Integer> productTypes, SimulationParameters param) {
+        int weight = 0;
+        for (Integer item : productTypes) {
+            weight += param.getProductWeight().get(item);
+        }
+        return weight;
     }
 }
