@@ -1,6 +1,9 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.file.FileSystems;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -15,8 +18,15 @@ import java.util.Map;
 public class Simulation {
 
     public static void main(String[] args) {
+        String data_file_name;
+        if (args.length == 0) {
+            data_file_name = "busy_day.in";
+        } else {
+            data_file_name = args[0];
+        }
 
         SimulationParameters parameters = new SimulationParameters();
+        IOHelper.parseFile(Paths.get("./data/"+data_file_name), parameters);
 
 
         int totTime = parameters.getTotalSimulationTime();
