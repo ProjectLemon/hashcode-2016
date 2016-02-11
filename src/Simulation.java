@@ -68,7 +68,7 @@ public class Simulation {
                 Warehouse warehouse = (Warehouse) pair.getValue();
                 Position pos = (Position) pair.getKey();
 
-                drones.add(new Drone(pos));
+                drones.add(new Drone(pos.getX(), pos.getY(), parameters.getMaxLoadDrones(), nrOfDrones));
                 nrOfDrones--;
             }
         }
@@ -92,8 +92,10 @@ public class Simulation {
                     outestOrder = order;
                 }
             }
+            orders.remove(outestOrder);
+            for (Order order : orders) {
 
-
+            }
 
 
         }
