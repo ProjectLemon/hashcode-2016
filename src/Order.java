@@ -8,6 +8,7 @@ public class Order {
     private final Position position;
     private int orderSize = 0;
     private List<Integer> productTypes = new ArrayList<>();
+    private Warehouse warehouse;
 
     public Order(Position pos, int size, List<Integer> types) {
         this.position = pos;
@@ -15,6 +16,13 @@ public class Order {
         this.productTypes = types;
     }
 
+    public void addWarehouse(Warehouse warehouse) {
+        this.warehouse = warehouse;
+    }
+
+    public Position getPosition() {
+        return position;
+    }
     //TODO: getters
     //TODO: How many of each productType?
 }
