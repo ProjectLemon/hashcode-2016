@@ -1,5 +1,7 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 
 /**
  * Created by linuslagerhjelm on 16-02-11.
@@ -7,10 +9,23 @@ import java.util.HashSet;
 public class Warehouse {
     private final Position position;
     private HashMap<Integer, Integer> productCount = new HashMap<>();
+    private List<Order> orders = new ArrayList<>();
 
     public Warehouse(Position pos, HashMap<Integer, Integer> count) {
         this.position = pos;
         this.productCount = count;
+    }
+
+    public Position getPosition() {
+        return position;
+    }
+
+    public void addOrder(Order order) {
+        orders.add(order);
+    }
+
+    public List<Order> getOrders() {
+        return orders;
     }
 
     public int productCount(int productType) {
@@ -32,5 +47,11 @@ public class Warehouse {
         } else {
             productCount.put(type, count);
         }
+    }
+
+    public boolean isProductInWarehouse(Integer product) {
+        boolean found = true;
+        //return if(found product)
+        return found;
     }
 }
