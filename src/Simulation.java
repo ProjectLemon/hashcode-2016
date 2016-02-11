@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -42,6 +43,32 @@ public class Simulation {
             grid.addOrder(order, order.getPosition());
         }
 
+        int nrOfDrones = parameters.getNrOfDrones();
+        List<Drone> drones = new ArrayList<>(nrOfDrones);
+        Iterator it = warehouses.entrySet().iterator();
+        // Distribute drones to warehouses
+        while (nrOfDrones > 0) {
+            while (it.hasNext()) {
+                Map.Entry pair = (Map.Entry) it.next();
+                Warehouse warehouse = (Warehouse) pair.getValue();
+                Position pos = (Position) pair.getKey();
+
+                drones.add(new Drone(pos));
+                nrOfDrones--;
+            }
+        }
+
+        // Calculate paths
+        it = warehouses.entrySet().iterator();
+        while (nrOfDrones > 0) {
+            while (it.hasNext()) {
+                Map.Entry pair = (Map.Entry) it.next();
+                Warehouse warehouse = (Warehouse) pair.getValue();
+                Position pos = (Position) pair.getKey();
+
+                orders = warehouse.getOrders();
+            }
+        }
 
         // Main loop
         for (int time = 0; time < totTime; time++) {
