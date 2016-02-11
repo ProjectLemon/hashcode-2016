@@ -11,8 +11,9 @@ public class Warehouse {
     private HashMap<Integer, Integer> productCount = new HashMap<>();
     private List<Order> orders = new ArrayList<>();
 
-    public Warehouse(Position pos) {
+    public Warehouse(Position pos, HashMap<Integer, Integer> count) {
         this.position = pos;
+        this.productCount = count;
     }
 
     public Position getPosition() {
@@ -46,5 +47,11 @@ public class Warehouse {
         } else {
             productCount.put(type, count);
         }
+    }
+
+    public boolean isProductInWarehouse(Integer product) {
+        boolean found = true;
+        //return if(found product)
+        return found;
     }
 }
