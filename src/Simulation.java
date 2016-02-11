@@ -92,8 +92,10 @@ public class Simulation {
                     outestOrder = order;
                 }
             }
-
-
+            orders.remove(outestOrder);
+            for (Order order : orders) {
+                
+            }
 
 
         }
