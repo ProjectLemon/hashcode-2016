@@ -8,7 +8,7 @@ import java.util.Stack;
  */
 
 public class Drone {
-    int ID;
+    /*int ID;
     int timestep;
     int maxWeight = 0;
     int currentWeight = 0;
@@ -45,15 +45,5 @@ public class Drone {
     }
     public Load(int ){
 
-}   }
-
-
-
-
-
-
-● the ID of the drone that the command is for
-        ● the command tag ­ a single character, either ‘L’ (for load) or ‘U’ (for unload),
-        ● the ID of the warehouse from which we load items / to which we unload items
-        ● the ID of the product type
-        ● the number of items of the product type to be loaded or unloaded ­ a positive integer
+   }*/
+}

@@ -14,7 +14,7 @@ public class IOHelper {
         IOHelper.parameters = parameters;
         Charset charset = Charset.forName("US-ASCII");
         try (BufferedReader reader = Files.newBufferedReader(file, charset)) {
-            readParameterSection(reader, parameters);
+            readParameterSection(reader, file, parameters);
             readProductInfo(reader, file, parameters);
             readWarehouseInfo(reader, file, parameters);
             readCustomerOrders(reader, file, parameters);
@@ -32,6 +32,7 @@ public class IOHelper {
     }
 
     private static void readParameterSection(BufferedReader reader,
+                                             Path file,
                                              SimulationParameters parameters)
                                                 throws IOException {
         String line = null;
