@@ -16,17 +16,17 @@ public class Drone {
     double y;
     Stack history;
 
-    public Drone(double x, double y, int maxWeight, int ID;) {
+    public Drone(double x, double y, int maxWeight, int ID) {
         this.ID = ID;
         this.maxWeight = maxWeight;
     }
 
-    public move( ,int timestep){
+    public void move(int timestep){
 
     }
 
-    public addMoventHistory( ){
-        this.timestep
+    public void addMoventHistory( ){
+        //this.timestep;
         // hämta villket tidssteg
     }
 
@@ -43,7 +43,7 @@ public class Drone {
             return true;
         }
     }
-    public Load(int ){
+    public void load(){
 
 }   }
 
@@ -51,9 +51,10 @@ public class Drone {
 
 
 
-
+/*
 ● the ID of the drone that the command is for
         ● the command tag ­ a single character, either ‘L’ (for load) or ‘U’ (for unload),
         ● the ID of the warehouse from which we load items / to which we unload items
         ● the ID of the product type
         ● the number of items of the product type to be loaded or unloaded ­ a positive integer
+*/
