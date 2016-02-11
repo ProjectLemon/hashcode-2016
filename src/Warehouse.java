@@ -8,8 +8,9 @@ public class Warehouse {
     private final Position position;
     private HashMap<Integer, Integer> productCount = new HashMap<>();
 
-    public Warehouse(Position pos) {
+    public Warehouse(Position pos, HashMap<Integer, Integer> count) {
         this.position = pos;
+        this.productCount = count;
     }
 
     public int productCount(int productType) {
